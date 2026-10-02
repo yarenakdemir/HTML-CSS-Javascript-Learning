@@ -1,0 +1,723 @@
+/* ===================================================
+   ÖDEV - style.css (Harici CSS)
+   =================================================== */
+
+/* Yazı tipi (internet yoksa Arial kullanılır) */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap");
+
+/* ---------- Genel (tag seçiciler) ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #666;
+    background-color: #fff;
+}
+
+h1, h2, h3 {
+    color: #444;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* İçeriği ortalayan sınıf */
+.kapsayici {
+    width: 1030px;
+    max-width: 92%;
+    margin: 0 auto;
+}
+
+/* ---------- Butonlar (sınıf seçici) ---------- */
+.buton {
+    display: inline-block;
+    padding: 10px 35px;
+    border: 0;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(to bottom, #3cbdf3, #2b9fd6);
+    cursor: pointer;
+}
+
+.buton:hover {
+    background: linear-gradient(to bottom, #52c8f7, #35aee6);
+}
+
+.buton.beyaz {
+    color: #444;
+    background: #fff;
+}
+
+.buton.beyaz:hover {
+    background: #f2f2f2;
+}
+
+.buton.koyu {
+    background: linear-gradient(to bottom, #555, #3d3d3d);
+}
+
+.buton.koyu:hover {
+    background: #666;
+}
+
+/* ===================================================
+   HEADER
+   =================================================== */
+#ust {
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.logo {
+    font-size: 21px;
+    padding: 18px 0 40px;
+    color: #444;
+}
+
+/* Mobil menü elemanları masaüstünde gizli */
+#menu-ac,
+.menu-buton {
+    display: none;
+}
+
+/* Menü - koyu bant + alttaki mavi çizgi */
+#menu {
+    background: linear-gradient(to bottom, #333, #252525);
+    border-bottom: 10px solid #34b9f0;
+}
+
+/* Çocuk seçici ( > ) ile ana menü listesi */
+#menu > ul {
+    display: flex;              /* flexbox */
+    justify-content: center;
+    list-style: none;
+}
+
+#menu > ul > li {
+    position: relative;
+}
+
+#menu > ul > li > a {
+    display: block;
+    padding: 22px 21px;
+    font-size: 15px;
+    color: #ccc;
+}
+
+/* Hover ve aktif sayfa (sözde sınıf) */
+#menu > ul > li > a:hover,
+#menu a.aktif {
+    color: #fff;
+}
+
+#menu a.aktif {
+    font-weight: 600;
+}
+
+/* Açılır (dropdown) alt menü */
+#menu .acilir ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    list-style: none;
+    text-align: left;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Fare üstündeyken alt menüyü göster */
+#menu .acilir:hover > ul {
+    display: block;
+    animation: asagiKay 0.25s ease;
+}
+
+#menu .acilir ul a {
+    display: block;
+    padding: 9px 18px;
+    color: #666;
+    font-size: 14px;
+}
+
+#menu .acilir ul a:hover {
+    color: #34b9f0;
+    background-color: #f5f5f5;
+}
+
+/* Alt menüdeki ilk elemanın üst boşluğu (sözde sınıf) */
+#menu .acilir ul li:first-child a {
+    padding-top: 12px;
+}
+
+/* ===================================================
+   BANNER
+   =================================================== */
+#banner {
+    position: relative;
+    height: 440px;
+    background: url("img/banner.jpg") center / cover no-repeat;
+}
+
+.banner-yazi {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 15px;
+    font-size: 18px;
+    color: #ddd;
+    background-color: rgba(30, 30, 30, 0.9);
+    animation: yukariKay 1s ease;   /* sayfa açılınca animasyon */
+}
+
+.banner-yazi strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ===================================================
+   3 ÖZELLİK
+   =================================================== */
+#ozellikler {
+    display: flex;
+    gap: 50px;
+    padding: 70px 0 80px;
+    text-align: center;
+}
+
+.ozellik {
+    flex: 1;
+}
+
+.ozellik .ikon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 25px;
+    padding: 5px;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+/* Torun seçici: .ikon içindeki svg */
+.ikon svg {
+    width: 100%;
+    height: 100%;
+    padding: 22px;
+    border-radius: 50%;
+    fill: #fff;
+    background: linear-gradient(to bottom, #3cbdf3, #2b9fd6);
+    transition: transform 0.4s;
+}
+
+.ozellik:hover .ikon svg {
+    transform: rotate(360deg) scale(1.05);
+}
+
+/* Bitişik kardeş seçici ( + ): ikondan hemen sonra gelen başlık */
+.ikon + h3 {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.ozellik p {
+    font-size: 15px;
+}
+
+/* ===================================================
+   BÜYÜK BAŞLIK
+   =================================================== */
+#buyuk-baslik {
+    padding: 85px 0 100px;
+    text-align: center;
+    background-color: #f5f5f5;
+    box-shadow: inset 0 15px 20px -15px rgba(0, 0, 0, 0.08),
+                inset 0 -15px 20px -15px rgba(0, 0, 0, 0.08);
+}
+
+#buyuk-baslik h2 {
+    font-size: 34px;
+    letter-spacing: -0.5px;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ddd;
+}
+
+#buyuk-baslik p {
+    font-size: 22px;
+    color: #aaa;
+}
+
+/* ===================================================
+   4 RESİMLİ YAZI
+   =================================================== */
+#yazilar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 50px;
+    padding: 80px 0 90px;
+}
+
+.yazi {
+    width: calc(50% - 25px);
+    overflow: hidden;           /* float temizleme */
+}
+
+/* Float: resim sola, yazı sağına akar */
+.yazi img {
+    float: left;
+    width: 150px;
+    height: 98px;
+    object-fit: cover;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.yazi img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Bitişik kardeş seçici: resimden sonraki başlık */
+.yazi img + h3 {
+    font-size: 18px;
+    margin: 8px 0 18px;
+}
+
+.yazi p {
+    font-size: 15px;
+}
+
+/* ===================================================
+   MAVİ ÇAĞRI ALANI
+   =================================================== */
+#cagri {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 55px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, #36bdf4, #2c9fd3);
+}
+
+#cagri h2 {
+    font-size: 26px;
+    color: #fff;
+}
+
+/* ===================================================
+   FOOTER
+   =================================================== */
+#alt {
+    padding: 70px 0 40px;
+    background-color: #f2f2f2;
+}
+
+.alt-icerik {
+    display: flex;
+    gap: 40px;
+}
+
+.link-sutun {
+    flex: 1;
+}
+
+.iletisim {
+    flex: 2;
+}
+
+#alt h3 {
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+/* Listeler: madde işareti yok */
+.link-sutun ul {
+    list-style: none;
+}
+
+.link-sutun li {
+    margin-bottom: 11px;
+}
+
+.link-sutun a {
+    font-size: 15px;
+    border-bottom: 1px dotted #bbb;
+}
+
+.link-sutun a:hover {
+    color: #34b9f0;
+    border-bottom-color: transparent;
+}
+
+/* Form */
+.iletisim .satir {
+    display: flex;
+    gap: 18px;
+}
+
+.iletisim input,
+.iletisim textarea {
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 300;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    outline: none;
+}
+
+/* Odaklanınca kenarlık mavi olur (sözde sınıf :focus) */
+.iletisim input:focus,
+.iletisim textarea:focus {
+    border-color: #34b9f0;
+    box-shadow: 0 0 0 2px rgba(52, 185, 240, 0.2);
+}
+
+.iletisim input::placeholder,
+.iletisim textarea::placeholder {
+    color: #aaa;
+}
+
+/* Sosyal medya ikonları */
+.sosyal {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    list-style: none;
+    margin: 70px 0 20px;
+}
+
+.sosyal svg {
+    width: 32px;
+    height: 32px;
+    fill: #999;
+    transition: fill 0.2s, transform 0.2s;
+}
+
+.sosyal a:hover svg {
+    fill: #34b9f0;
+    transform: translateY(-4px);
+}
+
+.telif {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    color: #999;
+}
+
+.telif span {
+    padding: 0 15px;
+}
+
+/* Genel kardeş seçici ( ~ ): ilkinden sonra gelen span'lerin sol çizgisi */
+.telif span ~ span {
+    border-left: 1px solid #ddd;
+}
+
+.telif a {
+    border-bottom: 1px dotted #bbb;
+}
+
+.telif a:hover {
+    color: #34b9f0;
+}
+
+/* ===================================================
+   ANİMASYONLAR (@keyframes)
+   =================================================== */
+@keyframes yukariKay {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes asagiKay {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================================
+   MOBİL (Responsive - media query)
+   =================================================== */
+@media (max-width: 1000px) {
+    #menu > ul > li > a {
+        padding: 22px 12px;
+    }
+}
+
+@media (max-width: 736px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    /* Üst koyu bar: hamburger + başlık */
+    #ust {
+        position: relative;
+        background: #2b2b2b;
+        border-bottom: 2px solid #34b9f0;
+    }
+
+    .logo {
+        font-size: 15px;
+        padding: 10px 0;
+        color: #fff;
+    }
+
+    .menu-buton {
+        display: block;
+        position: absolute;
+        top: 6px;
+        left: 12px;
+        font-size: 20px;
+        color: #ccc;
+        cursor: pointer;
+    }
+
+    /* Menü normalde kapalı */
+    #menu {
+        display: none;
+        border-bottom: 0;
+    }
+
+    /* Checkbox işaretlenince (:checked) menüyü aç - genel kardeş seçici */
+    #menu-ac:checked ~ #menu {
+        display: block;
+        animation: asagiKay 0.3s ease;
+    }
+
+    #menu > ul {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    #menu > ul > li > a {
+        padding: 12px 20px;
+        border-top: 1px solid #3a3a3a;
+    }
+
+    #menu .acilir ul {
+        position: static;
+        display: block;
+        box-shadow: none;
+        border-radius: 0;
+        background: #333;
+    }
+
+    #menu .acilir ul a {
+        padding-left: 40px;
+        color: #aaa;
+    }
+
+    /* Banner */
+    #banner {
+        height: 260px;
+    }
+
+    .banner-yazi {
+        flex-direction: column;
+        gap: 12px;
+        font-size: 16px;
+        text-align: center;
+        background-color: rgba(20, 20, 20, 0.75);
+    }
+
+    .banner-yazi .buton {
+        padding: 8px 30px;
+        font-size: 13px;
+    }
+
+    /* Özellikler: alt alta, ikon solda (float) */
+    #ozellikler {
+        display: block;
+        padding: 30px 0;
+        text-align: left;
+    }
+
+    .ozellik {
+        overflow: hidden;
+        margin-bottom: 40px;
+    }
+
+    .ozellik:last-child {
+        margin-bottom: 0;
+    }
+
+    .ozellik .ikon {
+        float: left;
+        width: 70px;
+        height: 70px;
+        margin: 0 20px 0 0;
+    }
+
+    .ikon svg {
+        padding: 16px;
+    }
+
+    .ikon + h3 {
+        font-size: 15px;
+        margin: 5px 0 6px;
+    }
+
+    .ozellik p {
+        font-size: 13px;
+    }
+
+    /* Yazı floatlı ikonun altına kaymasın, yanında sütun gibi dursun */
+    .ozellik h3,
+    .ozellik p,
+    .yazi h3,
+    .yazi p {
+        overflow: hidden;
+    }
+
+    /* Büyük başlık */
+    #buyuk-baslik {
+        padding: 40px 0;
+    }
+
+    #buyuk-baslik h2 {
+        font-size: 20px;
+    }
+
+    #buyuk-baslik p {
+        font-size: 13px;
+    }
+
+    /* Resimli yazılar tek sütun */
+    #yazilar {
+        padding: 30px 0 40px;
+        gap: 35px;
+    }
+
+    .yazi {
+        width: 100%;
+    }
+
+    .yazi img {
+        width: 110px;
+        height: 72px;
+        margin-right: 20px;
+    }
+
+    .yazi img + h3 {
+        font-size: 15px;
+        margin: 5px 0 6px;
+    }
+
+    .yazi p {
+        font-size: 13px;
+    }
+
+    /* Çağrı alanı */
+    #cagri {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 15px;
+    }
+
+    #cagri h2 {
+        font-size: 18px;
+    }
+
+    /* Footer: linkler 2 sütun, form altta */
+    #alt {
+        padding: 40px 0 30px;
+    }
+
+    .alt-icerik {
+        flex-wrap: wrap;
+        gap: 25px 20px;
+        text-align: center;
+    }
+
+    .link-sutun {
+        flex: 1 1 40%;
+    }
+
+    .iletisim {
+        flex: 1 1 100%;
+    }
+
+    #alt h3 {
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+
+    .link-sutun a {
+        font-size: 13px;
+    }
+
+    .iletisim .satir {
+        gap: 10px;
+    }
+
+    .iletisim .buton {
+        width: 100%;
+    }
+
+    .sosyal {
+        margin-top: 40px;
+    }
+
+    .sosyal svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .telif {
+        flex-direction: column;
+        align-items: center;
+        font-size: 12px;
+    }
+
+    .telif span ~ span {
+        border-left: 0;
+    }
+}
